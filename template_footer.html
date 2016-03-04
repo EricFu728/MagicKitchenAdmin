@@ -1,0 +1,21 @@
+
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    <script type="text/javascript">
+        function completeOrder(store_code,order_history_id)
+        {
+            confirm("确认已完成订单配送?");
+            $.get("http://localhost/dp/index.php/mkv1/Mk_admin/setInstantOrderStatus?store_code="+store_code+"&order_history_id="+order_history_id,function(data){
+                if(data['res']==1){
+                    $("#confirmBtn_"+order_history_id).attr("disabled","disabled");
+                }
+            });
+        }
+    </script>
+  
+</body></html>
